@@ -1,22 +1,23 @@
 // src/routes/blog/[slug]/+page.js
 import { getPostBySlug, getRelatedPosts } from '$lib/data/blog.js';
+import { browser } from '$app/environment';
 
-export async function load({ params }) {
+export async function load({ params, fetch }) {
   console.log("Slug params: ", params);
-  
+
   try {
-    const post = await getPostBySlug(params.slug);
+    const post = await getPostBySlug(params.slug, fetch, !browser);
     console.log("Post returned from getPostBySlug:", post);
-    
+
     if (!post) {
       return {
         status: 404,
         error: new Error(`Blog post not found for slug: ${params.slug}`)
       };
     }
-    
+
     const relatedPosts = getRelatedPosts(params.slug);
-    
+
     return {
       post,
       relatedPosts

@@ -19,6 +19,7 @@ export const blogPosts = [
     "image": "https://cdn.prod.website-files.com/61d2c808f50b08ee42c1c477/675698322890728b617211b9_AD_4nXc88HcQbdENqj7gqxwNgTq6GU8S7iRTCHODuGGzRGYzA3Pn26xGvjZqOrRXDPesyGq3seKo5LuVwLjt5rTIEsA6o5M5HOZMadbdSy38RKjq7hDbFa9IsW63k7CrnLYq4Kf6wBM4.png",
     "excerpt": "Rust promised me 'fearless concurrency' and safety like no other language. So I decided to spend a weekend with it. Spoiler: the compiler yelled at me a lot, but I weirdly enjoyed it 😅.",
     "featured": true,
+    "tags": ["rust", "tech", "programming", "learning"]
   }
   
   
@@ -56,29 +57,36 @@ export const blogPosts = [
   
   // Helper functions remain the same
   // src/lib/data/blog.js
-export async function getPostBySlug(slug) {
-
+export async function getPostBySlug(slug, fetch, isServer = false) {
     console.log("Finding slug: ", slug);
     const post = blogPosts.find(post => post.slug === slug);
 
     console.log("Matching slugs: ", post);
-    
+
     if (!post) return null;
-    
+
     try {
-      // Fetch the content from the static JSON file
-    //   C:\Users\rebor\Desktop\CODING Helpers\2025\vps-portfolio\vps-portfolio\static\data\blog-posts\building-performant-web-applications-with-sveltekit.json
-    //   static\data\blog-posts\building-performant-web-applications-with-sveltekit.json
-      const response = await fetch(`/data/blog-posts/${slug}.json`);
-    // const response = await fetch(`C:/Users/rebor/Desktop/CODING Helpers/2025/vps-portfolio/vps-portfolio/static/data/blog-posts/building-performant-web-applications-with-sveltekit.json`);
-      
-      if (!response.ok) throw new Error('Failed to load blog post content');
-      
-      // Parse the JSON only once
-      const fullPost = await response.json();
+      let fullPost;
+
+      if (isServer) {
+        // Server-side: read file directly from filesystem
+        const { readFileSync } = await import('fs');
+        const { join } = await import('path');
+        const filePath = join(process.cwd(), 'static', 'data', 'blog-posts', `${slug}.json`);
+        const fileContent = readFileSync(filePath, 'utf-8');
+        fullPost = JSON.parse(fileContent);
+      } else {
+        // Client-side: use fetch
+        const response = await fetch(`/data/blog-posts/${slug}.json`);
+
+        if (!response.ok) throw new Error('Failed to load blog post content');
+
+        fullPost = await response.json();
+      }
+
       console.log("Loaded content for:", slug);
       console.log(fullPost.content);
-      
+
       // Return the combined post
       return { ...post, content: fullPost.content };
     } catch (error) {
@@ -104,4 +112,19 @@ export async function getPostBySlug(slug) {
     return blogPosts
       .filter(post => post.slug !== currentSlug)
       .slice(0, limit);
+  }
+
+  export function getPostsByTag(tag) {
+    if (tag === 'All') return blogPosts;
+    return blogPosts.filter(post => post.tags && post.tags.includes(tag));
+  }
+
+  export function getAllTags() {
+    const tags = new Set();
+    blogPosts.forEach(post => {
+      if (post.tags) {
+        post.tags.forEach(tag => tags.add(tag));
+      }
+    });
+    return ['All', ...Array.from(tags)];
   }
