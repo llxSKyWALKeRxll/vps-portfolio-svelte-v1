@@ -2,11 +2,11 @@
 import { getPostBySlug, getRelatedPosts } from '$lib/data/blog.js';
 import { browser } from '$app/environment';
 
-export async function load({ params, fetch }) {
+export async function load({ params, fetch, url }) {
   console.log("Slug params: ", params);
 
   try {
-    const post = await getPostBySlug(params.slug, fetch, !browser);
+    const post = await getPostBySlug(params.slug, fetch, !browser, url);
     console.log("Post returned from getPostBySlug:", post);
 
     if (!post) {

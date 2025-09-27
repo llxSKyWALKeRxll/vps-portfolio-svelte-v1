@@ -57,7 +57,7 @@ export const blogPosts = [
   
   // Helper functions remain the same
   // src/lib/data/blog.js
-export async function getPostBySlug(slug, fetch, isServer = false) {
+export async function getPostBySlug(slug, fetch, isServer = false, requestUrl = null) {
     console.log("Finding slug: ", slug);
     const post = blogPosts.find(post => post.slug === slug);
 
@@ -66,26 +66,26 @@ export async function getPostBySlug(slug, fetch, isServer = false) {
     if (!post) return null;
 
     try {
-      let fullPost;
-
-      if (isServer) {
-        // Server-side: read file directly from filesystem
-        const { readFileSync } = await import('fs');
-        const { join } = await import('path');
-        const filePath = join(process.cwd(), 'static', 'data', 'blog-posts', `${slug}.json`);
-        const fileContent = readFileSync(filePath, 'utf-8');
-        fullPost = JSON.parse(fileContent);
+      // Use fetch for both server and client, but construct full URL for server
+      let url;
+      if (isServer && requestUrl) {
+        // Server-side: use the origin from the request URL
+        const origin = requestUrl.origin;
+        url = `${origin}/data/blog-posts/${slug}.json`;
       } else {
-        // Client-side: use fetch
-        const response = await fetch(`/data/blog-posts/${slug}.json`);
-
-        if (!response.ok) throw new Error('Failed to load blog post content');
-
-        fullPost = await response.json();
+        // Client-side: use relative URL
+        url = `/data/blog-posts/${slug}.json`;
       }
 
+      console.log("Fetching from URL:", url);
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error(`Failed to load blog post content: ${response.status} ${response.statusText}`);
+      }
+
+      const fullPost = await response.json();
       console.log("Loaded content for:", slug);
-      console.log(fullPost.content);
 
       // Return the combined post
       return { ...post, content: fullPost.content };
