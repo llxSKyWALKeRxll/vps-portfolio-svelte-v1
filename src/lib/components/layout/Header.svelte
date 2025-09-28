@@ -53,9 +53,9 @@
   
   <header class:scrolled>
     <div class="container header-container">
-      <a href="/" class="logo">Vansh Pratap Singh</a>
+      <a href="/" class="logo clickable">Vansh Pratap Singh</a>
       
-      <button class="menu-toggle" class:open={menuOpen} on:click={toggleMenu} aria-label="Toggle menu">
+      <button class="menu-toggle clickable" class:open={menuOpen} on:click={toggleMenu} aria-label="Toggle menu">
         <span></span>
         <span></span>
         <span></span>
@@ -65,8 +65,9 @@
         <ul>
           {#each navItems as item}
             <li>
-              <a 
-                href={item.href} 
+              <a
+                href={item.href}
+                class="clickable"
                 class:active={$page.url.pathname === item.href}
                 on:click={() => menuOpen = false}
               >

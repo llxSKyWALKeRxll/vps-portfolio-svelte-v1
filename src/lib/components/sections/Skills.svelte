@@ -79,7 +79,7 @@
     items: [
       { name: 'Python', level: 95 },
       { name: 'Java', level: 95 },
-      { name: 'Rust', level: 90 },
+      { name: 'Rust', level: 95 },
       { name: 'Go', level: 95 },
       { name: 'Lua', level: 80 },
       { name: 'C++', level: 80 },
@@ -94,7 +94,8 @@
       { name: 'FastAPI', level: 95 },
       { name: 'Django', level: 95 },
       { name: 'Gin', level: 95 },
-      { name: 'Actix', level: 95 },
+      { name: 'Axum', level: 95 },
+      { name: 'Actix', level: 90 },
       { name: 'React', level: 95 },
       { name: 'Svelte', level: 95 }
     ]
