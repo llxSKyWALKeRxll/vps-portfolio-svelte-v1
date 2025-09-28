@@ -204,8 +204,9 @@
   .post-featured-image img {
     width: 100%;
     max-height: 500px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
+    background: rgba(0, 0, 0, 0.1);
   }
   
   .post-content-wrapper {
@@ -340,7 +341,8 @@
   .related-post-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.05);
   }
   
   .related-post-content {
