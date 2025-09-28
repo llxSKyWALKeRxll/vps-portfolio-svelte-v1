@@ -15,12 +15,24 @@ export const blogPosts = [
     "slug": "introduction-to-rust",
     "date": "Dec 10, 2024",
     "category": "Programming Languages",
-    "readTime": "9 min read",
+    "readTime": "5 min read",
     "image": "https://cdn.prod.website-files.com/61d2c808f50b08ee42c1c477/675698322890728b617211b9_AD_4nXc88HcQbdENqj7gqxwNgTq6GU8S7iRTCHODuGGzRGYzA3Pn26xGvjZqOrRXDPesyGq3seKo5LuVwLjt5rTIEsA6o5M5HOZMadbdSy38RKjq7hDbFa9IsW63k7CrnLYq4Kf6wBM4.png",
     "excerpt": "Rust promised me 'fearless concurrency' and safety like no other language. So I decided to spend a weekend with it. Spoiler: the compiler yelled at me a lot, but I weirdly enjoyed it 😅.",
     "featured": true,
     "tags": ["rust", "tech", "programming", "learning"]
+  },
+  {
+    "title": "🎮 AI in Gaming: Are We Ready for Truly Living Worlds?",
+    "slug": "ai-in-gaming",
+    "date": "Sep 28, 2025",
+    "category": "Gaming",
+    "readTime": "8 min read",
+    "image": "https://akm-img-a-in.tosshub.com/sites/itgaming/resources/202409/image-2024-09-04-211607761040924091607.png",
+    "excerpt": "NPCs in games today are mostly predictable and scripted. But what if they were powered by AI agents — learning, adapting, and creating a new experience every time? Let’s talk feasibility, costs, and the future of truly living game worlds.",
+    "featured": true,
+    "tags": ["ai", "gaming", "future", "npc"]
   }
+
   
   
     // {
