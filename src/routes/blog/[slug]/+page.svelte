@@ -1,18 +1,56 @@
 <!-- src/routes/blog/[slug]/+page.svelte -->
 <script>
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
+
   export let data;
-  
+
   console.log("Page data received:", data);
-  
-  let { post, relatedPosts } = data;
+
+  // Reactive variables that update when data changes
+  $: post = data?.post;
+  $: relatedPosts = data?.relatedPosts;
+
   let currentUrl = '';
-  
+
+  // Update URL when page changes
+  $: if ($page.url) {
+    currentUrl = $page.url.href;
+  }
+
+  // Function to setup intersection observer for animations
+  const setupObserver = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.appear').forEach(el => {
+      // Reset animations by removing 'visible' class
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  };
+
+  // Re-setup observer when post changes (for navigation between blog posts)
+  $: if (post) {
+    // Small delay to ensure DOM is updated
+    setTimeout(() => {
+      setupObserver();
+    }, 100);
+  }
+
   onMount(() => {
     // Get the current URL only on the client side
     currentUrl = window.location.href;
     console.log("Current URL:", currentUrl);
     console.log("Post content available:", post && post.content ? "Yes" : "No");
+
+    // Initial setup
+    setupObserver();
   });
 </script>
 
