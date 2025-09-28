@@ -17,15 +17,15 @@
       <div class="about-content">
         <div class="about-text appear">
           <p>
-            👋 Hey there! I’m Vansh Pratap Singh, a software engineer who loves building scalable systems and solving tough problems with code. Over the last few years, I’ve worked across backend, distributed systems, and AI, shipping features that serve tens of thousands of users in real time, optimizing microservices for 4x throughput, and even cutting operational costs by 60%.
+            👋 Hey there! I'm Vansh, a software engineer who genuinely enjoys the puzzle-solving aspect of building systems and writing code. Over the past few years, I've had the opportunity to work with backend technologies, distributed systems, and AI - experiences that have taught me a lot about creating reliable software that people actually use.
           </p>
 
           <p>
-            🚀 From winning company hackathons 🏆 to being recognized with awards for technical excellence, I enjoy creating impactful solutions that blend performance, reliability, and innovation. I’m equally at home designing high-scale backend architectures with Java, Spring Boot, and Go as I am experimenting with AI/LLMs, Prompt Engineering, and Python.
+            🛠️ I find myself drawn to challenges involving performance optimization and system design. Whether it's working with Java and Spring Boot for robust backend services, experimenting with Go for concurrent systems, or exploring AI and LLMs through Python, I'm always curious about how different tools can solve different problems.
           </p>
 
           <p>
-            ⚡ Outside of work, I’m always exploring new technologies (currently diving deeper into Rust :p) and love working on projects that push boundaries and make life a little easier for people. I like keeping healthy & also love football, combat sports, music, dogs, cats & rabbits.
+            ⚡ When I'm not coding, I'm usually exploring new technologies or working on side projects that hopefully make things a bit easier for someone out there. I also enjoy staying active through football and combat sports, listening to music, and spending time with furry friends - dogs, cats, and rabbits all have a special place in my heart.
           </p>
           <!-- <p>
             😃I'm a passionate software developer with expertise in building modern web applications and digital experiences. 

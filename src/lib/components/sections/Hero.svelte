@@ -266,15 +266,26 @@
       .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
+        padding-bottom: 4rem; /* Add extra space for scroll indicator */
       }
-      
+
       .cta-buttons {
         justify-content: center;
+        margin-bottom: 3rem; /* Add space between buttons and scroll indicator */
       }
-      
+
       .hero-visual {
         order: -1;
         margin-bottom: 2rem;
+      }
+
+      .scroll-indicator {
+        bottom: 1rem; /* Move scroll indicator closer to bottom */
+        font-size: 0.8rem; /* Make it slightly smaller on mobile */
+      }
+
+      .scroll-line {
+        height: 30px; /* Make the line shorter on mobile */
       }
     }
   </style>

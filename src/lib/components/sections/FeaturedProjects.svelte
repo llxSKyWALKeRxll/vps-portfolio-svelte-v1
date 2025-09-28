@@ -53,7 +53,7 @@
       
       <div class="projects-grid">
         {#each projects as project, i}
-          <div class="project-card appear" style="--delay: {i * 0.2}s">
+          <div class="project-card appear clickable" style="--delay: {i * 0.2}s">
             <div class="project-image">
               <img src={project.imageUrl || '/images/placeholder.jpg'} alt={project.title} />
             </div>
@@ -69,8 +69,8 @@
               </div>
               
               <div class="project-links">
-                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="project-link github">GitHub</a>
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="project-link live">Live Demo</a>
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" class="project-link github clickable">GitHub</a>
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="project-link live clickable">Live Demo</a>
               </div>
             </div>
           </div>
@@ -78,7 +78,7 @@
       </div>
       
       <div class="view-all-container appear">
-        <a href="/projects" class="view-all-button">View All Projects</a>
+        <a href="/projects" class="view-all-button clickable">View All Projects</a>
       </div>
     </div>
   </section>
