@@ -206,7 +206,7 @@
         <h1>Resume</h1>
         <p>My professional journey and qualifications</p>
         <div class="resume-actions">
-          <a href="/data/resume/Vansh_Resume.pdf" download="Vansh_Resume.pdf" class="download-button">
+          <a href="/data/resume/VanshPratapSingh_Resume.pdf" download="VanshPratapSingh_Resume.pdf" class="download-button">
             Download PDF
           </a>
         </div>
